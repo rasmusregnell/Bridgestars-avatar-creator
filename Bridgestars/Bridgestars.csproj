@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>11</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Microsoft.CSharp" />
+    <None Remove="Backend\Data\**" />
+    <None Remove="Networking\Lobby\Table\Tournament\**" />
+    <None Remove="BridgeUtilities\Analytics\Bidding\Custom System Files\" />
+    <None Remove="BridgeUtilities\Analytics\Play\" />
+    <None Remove="BridgeUtilities\Analytics\Play\Leads\" />
+    <None Remove="BridgeUtilities\Analytics\Play\Suit Combinations\" />
+    <None Remove="BridgeUtilities\Analytics\Practice\" />
+    <None Remove="BridgeUtilities\Analytics\Practice\Bridgeskolan\" />
+    <None Remove="Magick.NET.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\Downloads\Newtonsoft.Json-for-Unity-13.0.102 2\Plugins\NewtonsoftAOT.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>Dependencies\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Utf8Json">
+      <HintPath>Dependencies\Utf8Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="13.0.1" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="parse" Version="2.0.0-develop-1" />
+    <PackageReference Include="Magick.NET.Core" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Networking\Tournaments\" />
+    <Folder Include="Obsolete" />
+    <Folder Include="BridgeUtilities\Analytics\Play\" />
+    <Folder Include="BridgeUtilities\Analytics\Play\Leads\" />
+    <Folder Include="BridgeUtilities\Analytics\Play\Suit Combinations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Backend\Data\**" />
+    <Compile Remove="Networking\Lobby\Table\Tournament\**" />
+    <Compile Remove="Backend\Auth.cs" />
+    <Compile Remove="Backend\ParseError.cs" />
+    <Compile Remove="Backend\ParseServer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Backend\Data\**" />
+    <EmbeddedResource Remove="Networking\Lobby\Table\Tournament\**" />
+  </ItemGroup>
+</Project>
