@@ -74,7 +74,24 @@ namespace Test.AvatarGenerator
 
         [TestMethod]
         public void test() {
+          new WebRequest()
+          .setEndpoint("https://api.dicebear.com/6.x/avataaars/png")
+          .GET()
+          .Then(response => {
+            var resp = response.RawBytes();
+            File.WriteAllBytes("test.png",resp);
+          });
 
+          return new WebRequest()
+          .setEndpoint("https://api.dicebear.com/6.x/avataaars/png")
+          .setParam("seed" , "John")
+          .setParam("hair", "")
+          .GET()
+          .Then(response => {
+            var resp = response.RawBytes();
+            //File.WriteAllBytes("test.png",resp);
+            return ImageUtil.LoadFromData(resp);
+          });
         }
     }
 
