@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Bridgestars.Util;
+using Bridgestars.Util.WebUtil;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Test.AvatarGenerator
@@ -75,20 +76,21 @@ namespace Test.AvatarGenerator
         [TestMethod]
         public void test() {
           new WebRequest()
-          .setEndpoint("https://api.dicebear.com/6.x/avataaars/png")
+          .SetEndpoint("https://api.dicebear.com/6.x/avataaars/png")
           .GET()
           .Then(response => {
-            var resp = response.RawBytes();
+            var resp = response.RawBytes;
             File.WriteAllBytes("test.png",resp);
+            Debugger.Print(Directory.GetCurrentDirectory());
           });
 
-          return new WebRequest()
-          .setEndpoint("https://api.dicebear.com/6.x/avataaars/png")
-          .setParam("seed" , "John")
-          .setParam("hair", "")
+           new WebRequest()
+          .SetEndpoint("https://api.dicebear.com/6.x/avataaars/png")
+          .AddParam("seed" , "John")
+          .AddParam("hair", "")
           .GET()
           .Then(response => {
-            var resp = response.RawBytes();
+            var resp = response.RawBytes;
             //File.WriteAllBytes("test.png",resp);
             return ImageUtil.LoadFromData(resp);
           });
