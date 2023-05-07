@@ -17,6 +17,9 @@
     <None Remove="BridgeUtilities\Analytics\Practice\" />
     <None Remove="BridgeUtilities\Analytics\Practice\Bridgeskolan\" />
     <None Remove="Magick.NET.Core" />
+    <None Remove="Networking\**" />
+    <None Remove="Obsolete\**" />
+    <None Remove="BridgeUtilities\**" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
@@ -42,23 +45,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Networking\Tournaments\" />
-    <Folder Include="Obsolete" />
-    <Folder Include="BridgeUtilities\Analytics\Play\" />
-    <Folder Include="BridgeUtilities\Analytics\Play\Leads\" />
-    <Folder Include="BridgeUtilities\Analytics\Play\Suit Combinations\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Backend\Data\**" />
     <Compile Remove="Networking\Lobby\Table\Tournament\**" />
     <Compile Remove="Backend\Auth.cs" />
     <Compile Remove="Backend\ParseError.cs" />
     <Compile Remove="Backend\ParseServer.cs" />
+    <Compile Remove="Networking\**" />
+    <Compile Remove="Obsolete\**" />
+    <Compile Remove="BridgeUtilities\**" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="Backend\Data\**" />
     <EmbeddedResource Remove="Networking\Lobby\Table\Tournament\**" />
+    <EmbeddedResource Remove="Networking\**" />
+    <EmbeddedResource Remove="Obsolete\**" />
+    <EmbeddedResource Remove="BridgeUtilities\**" />
   </ItemGroup>
 </Project>
