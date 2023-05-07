@@ -71,5 +71,12 @@ namespace Test.AvatarGenerator
                //File.WriteAllBytes("/Users/theo/Documents/bridgestars/lib/bridgestars-lib/Test/IMG_2280_DOWNLOADED.jpeg",x);
            //}).Await();
         }
+
+        [TestMethod]
+        public void test() {
+
+        }
     }
+
+
 }
