@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\..\Downloads\Newtonsoft.Json-for-Unity-13.0.102 2\Plugins\NewtonsoftAOT.Json.dll</HintPath>
+      <HintPath>Dependencies\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp">
       <HintPath>Dependencies\RestSharp.dll</HintPath>
