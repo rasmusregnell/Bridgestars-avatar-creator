@@ -44,7 +44,7 @@ namespace Test.AvatarGenerator
            
            var image = new byte[] { 0, 1, 2 }; //....
            //or
-           var img = ImageUtil.LoadFromFile("/Users/theo/Documents/bridgestars/lib/bridgestars-lib/Test/IMG_2280.jpg");
+           var img = ImageUtil.LoadFromFile("/Users/theo/Documents  /bridgestars/lib/bridgestars-lib/Test/IMG_2280.jpg");
             
            //clamp size to be max 256px in any direction
            img = ImageUtil.ClampSize(img, 256);
@@ -92,7 +92,9 @@ namespace Test.AvatarGenerator
                 AvatarBuilder builder = AvatarBuilderPresets.Normal();
                 //var builder = new AvatarBuilder(new Avatar());
                Avatar avatar = builder
-                   .IncludeFacialHair()
+                   //.IncludeEyebrows()
+                   .ExcludeEyes(Eyes.Hearts, Eyes.Happy)
+                   .SetFacialHairProbability(0)
                    .Build();
                MagickImage image = avatar.Render();
                Console.WriteLine(avatar.accessoriesProbability);
