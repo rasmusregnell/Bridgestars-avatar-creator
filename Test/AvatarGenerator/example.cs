@@ -2,7 +2,10 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using Bridgestars.Util;
+using Bridgestars.Util.AvatarUtil;
+using Bridgestars.Util.AvatarUtil.FeatureTypes;
 using Bridgestars.Util.WebUtil;
+using ImageMagick;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Debugger = Bridgestars.Util.Debugger;
 
@@ -41,7 +44,7 @@ namespace Test.AvatarGenerator
            
            var image = new byte[] { 0, 1, 2 }; //....
            //or
-           var img = ImageUtil.LoadFromFile("/Users/theo/Documents/bridgestars/lib/bridgestars-lib/Test/IMG_2280.jpg");
+           var img = ImageUtil.LoadFromFile("/Users/theo/Documents  /bridgestars/lib/bridgestars-lib/Test/IMG_2280.jpg");
             
            //clamp size to be max 256px in any direction
            img = ImageUtil.ClampSize(img, 256);
@@ -75,29 +78,29 @@ namespace Test.AvatarGenerator
            //}).Await();
         }
 
+        //When generating an avatar it is recommended to use the class AvatarBuilder
+        //There are two recommended options:
+        //Create a builder which has a starting avatar with certain specific features
+        //1) AvatarBuilder builder = new AvatarBuilder(Avatar.user345x);
+        //Create a builder which starts with an avatar randomized from different presets
+        //2) AvatarBuilder builder = AvatarBuilderPresets.Normal()
+        //After you have created a builder, you are free to use the methods in AvatarBuilder before
+        //creating your Avatar with AvatarBuilder.Build()
         [TestMethod]
         public void test() {
-          new WebRequest()
-          .SetEndpoint("https://api.dicebear.com/6.x/avataaars/png")
-          .AddParam("seed" , "rasmus")
-          .GET()
-          .Then(response => {
-            var resp = response.RawBytes;
-            File.WriteAllBytes("test.png",resp);
-            Debugger.Print(Directory.GetCurrentDirectory());
-            System.Diagnostics.Process.Start("open", Directory.GetCurrentDirectory() + "/test.png");
-          }).Await();
-          return;
-           new WebRequest()
-          .SetEndpoint("https://api.dicebear.com/6.x/avataaars/png")
-          .AddParam("seed" , "John")
-          .AddParam("hair", "")
-          .GET()
-          .Then(response => {
-            var resp = response.RawBytes;
-            //File.WriteAllBytes("test.png",resp);
-            return ImageUtil.LoadFromData(resp);
-          });
+            {
+                AvatarBuilder builder = AvatarBuilderPresets.Normal();
+                //var builder = new AvatarBuilder(new Avatar());
+               Avatar avatar = builder
+                   //.IncludeEyebrows()
+                   .ExcludeEyes(Eyes.Hearts, Eyes.Happy)
+                   .SetFacialHairProbability(0)
+                   .Build();
+               MagickImage image = avatar.Render();
+               Console.WriteLine(avatar.accessoriesProbability);
+               image.Write("C:/Users/Rasmu/source/repos/bridgestars-avatar-creator/Test/AvatarGenerator/Images/3.png");
+                return;
+            }
         }
     }
 

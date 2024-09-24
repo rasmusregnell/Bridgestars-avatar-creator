@@ -24,4 +24,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Bridgestars\Bridgestars.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="AvatarGenerator\example.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
 </Project>
