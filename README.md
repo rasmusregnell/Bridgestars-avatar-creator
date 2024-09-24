@@ -1,3 +1,2 @@
-# Bridgestars
-C# wrapper to dicebear http api
-the style we use is "avataaars"
+# Avatar creator
+C# wrapper to dicebear http api for generating avatar images.
